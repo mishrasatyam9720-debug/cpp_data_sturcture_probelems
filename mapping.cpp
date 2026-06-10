@@ -1,33 +1,35 @@
-# include<iostream>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
-int main (){
-     cout<<"enter size of an array";
+
+int main() {
     int n;
-   
     cin >> n;
-    int a[n];
-    
-    map<int, int> m;
-    cout<<"enter element in array";
-   for(int i=0 ; i<n ; i++ ){
-    cin >>a[i];
-    m[a[i]]++;
-   }
 
-   int q;
-   cout<<"how many no want to cheak";
-   cin>>q;
-  
-     while(q--){
-    int number;
-    cout<<"enter no for cheaking";
-    cin>>number;
-    cout<<" corresponding values are ";
+    int arr[n];
+    unordered_map<int, int> mpp;
 
-      cout<<m[number]<<endl;
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+        mpp[arr[i]]++;
+    }
 
-   }
+    // pre-compute
 
+    // iterate in the map
+    for (auto it = mpp.begin(); it != mpp.end(); it++) {
+        cout << it->first << " " << it->second << endl;
+    }
 
+    int q;
+    cin >> q;
+
+    while (q--) {
+        int number;
+        cin >> number;
+
+        // fetch
+        cout << mpp[number] << endl;
+    }
+
+    return 0;
 }
