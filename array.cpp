@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std ;
+// int main(){
+//     int arr[]={5,6,8,1,2};
+//     int largest=0;
+//     for (int i=0;i<5;i++){
+//     if(arr[i]>largest){
+//         largest=arr[i];
+//     }
+//     }
+//     cout<<"largest no " <<largest<<endl;
+//     int second_largest=0;
+//         for (int i=0;i<4;i++){
+//         if (arr[i]>second_largest && arr[i]<largest){
+//             second_largest=arr[i];
+//         }
+//         }
+//         cout << "second largest no "<<second_largest;
+//     }
+
+// alternate approach --------
+// int main (){
+//     int largest_1=0;
+//     int second_largest_1=0;
+//     int arr[]={8,6,8,1,2};
+//     for (int i=0;i<5;i++){
+//         if (arr[i]>largest_1){
+//         second_largest_1 =largest_1;
+//         largest_1=arr[i];
+       
+  
+//     }
+//     else if (arr[i]>second_largest_1 && arr[i]<largest_1){
+//         second_largest_1=arr[i];
+//     }
+    
+// }
+//    cout<<"seoncd_largest "<<second_largest_1;
+//   }
+
+//remove duplicates -------------
+
+int main() {
+    int arr[] = {6,7,8,2,3,3,3,3,6,6,7,8};
+
+    int i = 0;
+
+    for (int j = 1; j < 12; j++) {
+        if (arr[i] != arr[j]) {
+            i++;
+            arr[i] = arr[j];
+        }
+    }
+
+    for(int k=0; k<=i; k++){
+        cout << arr[k] << " ";
+    }
+}
