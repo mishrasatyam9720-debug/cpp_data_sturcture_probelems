@@ -40,19 +40,48 @@ using namespace std ;
 
 //remove duplicates -------------
 
-int main() {
-    int arr[] = {6,7,8,2,3,3,3,3,6,6,7,8};
+// int main() {
+//     int arr[] = {6,7,8,2,3,3,3,3,6,6,7,8};
 
-    int i = 0;
+//     int i = 0;
 
-    for (int j = 1; j < 12; j++) {
-        if (arr[i] != arr[j]) {
-            i++;
-            arr[i] = arr[j];
-        }
+//     for (int j = 1; j < 12; j++) {
+//         if (arr[i] != arr[j]) {
+//             i++;
+//             arr[i] = arr[j];
+//         }
+//     }
+
+//     for(int k=0; k<=i; k++){
+//         cout << arr[k] << " ";
+//     }
+// }
+
+//// traversing of an array 
+
+int main (){
+    int arr[]={1,2,3,3,4,5,5,6};
+    int n=8;
+    int key;
+    cout<<"enter key for rotation";
+    cin>>key;
+    key = key % n;
+    
+    int i ;
+    int temp[8];
+    for ( i = 0; i < n; i++){
+        temp[i] = arr[i];
+    }
+    for ( i = key; i < n; i++){
+        arr[i-key] = temp[i];
     }
 
-    for(int k=0; k<=i; k++){
-        cout << arr[k] << " ";
+    for ( i =n-key ; i<n ; i++ ){
+        arr[i]=temp[i-(n-key)];
     }
+
+    for (i=0;i<n;i++){
+        cout << arr[i];
+    }
+
 }
