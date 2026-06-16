@@ -142,5 +142,52 @@ using namespace std ;
 
 // }
 
-// maximum sub array
-// again
+// maximum sub array-brute approach consisting of time complaexity o(n2)-------
+// int main(){
+//     int arr[]={9,4,0,20,3,10,5};
+//     int k =33;
+//     int count=0;
+    
+//     for (int i =0;i<7;i++){
+//         int sum=0;
+//         for (int j =i;j<7;j++){
+//             sum=sum+arr[j];
+//             if (sum==k){
+//                 count++;
+//             }
+//         }
+
+//     }
+//     cout<< " total no of arrays "<< count;
+// } 
+
+// optimal approach consisting of time complexity of o(n)------
+
+int main (){
+    int arr[]={9,4,0,20,3,10,5};
+    int k=33;
+    vector<int>nums;
+    int sum=0;
+    unordered_map<int,int>m;
+    for (int i=0 ; i<7;i++){
+        sum=sum + arr[i];
+        nums.push_back(sum);
+        m[sum]++;
+
+    }
+
+
+    int count=0;
+
+    for ( int i =0; i<7 ; i++){
+        if (nums[i]==k){
+            count ++;
+        }
+        int val = nums[i]-k;
+        if (m.find(val)!=m.end()){
+            count=count+m[val];
+        }
+    }
+   cout <<" count of subarray consiting of highest subarray "<<count;
+    
+}
