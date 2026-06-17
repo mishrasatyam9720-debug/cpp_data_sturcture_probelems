@@ -70,124 +70,178 @@ using namespace std ;
 //     key = key % n;
     
 //     int i ;
-//     int temp[8];
-//     for ( i = 0; i < n; i++){
-//         temp[i] = arr[i];
-//     }
-//     for ( i = key; i < n; i++){
-//         arr[i-key] = temp[i];
-//     }
+// //     int temp[8];
+// //     for ( i = 0; i < n; i++){
+// //         temp[i] = arr[i];
+// //     }
+// //     for ( i = key; i < n; i++){
+// //         arr[i-key] = temp[i];
+// //     }
 
-//     for ( i =n-key ; i<n ; i++ ){
-//         arr[i]=temp[i-(n-key)];
-//     }
+// //     for ( i =n-key ; i<n ; i++ ){
+// //         arr[i]=temp[i-(n-key)];
+// //     }
 
-//     for (i=0;i<n;i++){
-//         cout << arr[i];
-//     }
+// //     for (i=0;i<n;i++){
+// //         cout << arr[i];
+// //     }
 
-// }
+// // }
 
-///// missing value - i have been not studied bit manuplation till so i'm going with best optimal solution without using bit manupulation ----------
+// ///// missing value - i have been not studied bit manuplation till so i'm going with best optimal solution without using bit manupulation ----------
 
-// int main (){
-//     int arr[] = {1, 2, 3, 5};
-//     int n = sizeof(arr) / sizeof(arr[0]);
+// // int main (){
+// //     int arr[] = {1, 2, 3, 5};
+// //     int n = sizeof(arr) / sizeof(arr[0]);
+// //     int sum = 0;
+// //     for (int i = 0; i < n; i++) {
+// //         sum += arr[i];
+// //     }
+// //     int expected = (n + 1) * (n + 2) / 2;
+// //     int missing = expected - sum;
+// //     cout << "Missing value: " << missing << endl;
+// //     return 0;
+// // }
+
+
+// // maximum count of consecutive one -----------
+
+// // int main (){
+// //           int arr[] = {1,1,0,1,1,1,1,0,1,1,1};
+// //           int j ;
+// //           int count = 0 ;
+// //           int max_count = 0 ;
+// //           for (j=0;j<11;j++){
+// // //              if (arr[j]==1){
+// // //                count++;
+// // //                max_count=max(max_count,count);
+
+// // //              }
+// // //              else{
+// // //                 count=0;
+// // //              }
+// // //           }
+// // //           cout<<"maximum consecutive one's "<<max_count;
+// // // }
+
+// // // which element apperas one's else two -- this can be done by xor as well as and that will b most optimal solution but here we are doing with unordered map the difference is this that it will take space complexity with o(n) and xor will take o(1) elsewhere time complexity will be same of o(nlogn).
+
+// // // int main(){
+// // //     int arr [] = {1,1,2,3,3,4,4};
+// // //     unordered_map<int,int>m;
+// // //     for (int i =0 ; i<7 ; i++){
+// // //         m[arr[i]]++;
+// // //     }
+
+// // //     for (auto &p : m) {
+// // //         if (p.second == 1) {
+// // //             cout << p.first;
+// // //             break;
+// // //         }
+// // //     }
+
+// // // }
+
+// // // maximum sub array-brute approach consisting of time complaexity o(n2)-------
+// // // int main(){
+// // //     int arr[]={9,4,0,20,3,10,5};
+// // //     int k =33;
+// // //     int count=0;
+    
+// // //     for (int i =0;i<7;i++){
+// // //         int sum=0;
+// // //         for (int j =i;j<7;j++){
+// // //             sum=sum+arr[j];
+// // //             if (sum==k){
+// // //                 count++;
+// // //             }
+// // //         }
+
+// // //     }
+// // //     cout<< " total no of arrays "<< count;
+// // // } 
+
+// // // optimal approach consisting of time complexity of o(n)------
+
+// // int main (){
+// //     int arr[]={9,4,0,20,3,10,5};
+// //     int k=33;
+// //     vector<int>nums;
+// //     int sum=0;
+// //     unordered_map<int,int>m;
+// //     for (int i=0 ; i<7;i++){
+// //         sum=sum + arr[i];
+// //         nums.push_back(sum);
+// //         m[sum]++;
+
+// //     }
+
+
+// //     int count=0;
+
+// //     for ( int i =0; i<7 ; i++){
+// //         if (nums[i]==k){
+// //             count ++;
+// //         }
+// //         int val = nums[i]-k;
+// //         if (m.find(val)!=m.end()){
+// //             count=count+m[val];
+// //         }
+// //     }
+// //    cout <<" count of subarray consiting of highest subarray "<<count;
+    
+// // }
+
+// // max subarray lenght --------
+// int main() {
+
+//     vector<int> nums = {1, -1, 5, -2, 3};
+//     int k = 3;
+
+//     unordered_map<int,int> m;
+
 //     int sum = 0;
-//     for (int i = 0; i < n; i++) {
-//         sum += arr[i];
+//     int maxLen = 0;
+
+//     m[0] = -1;
+
+//     for(int i = 0; i < nums.size(); i++) {
+
+//         sum += nums[i];
+
+//         int val = sum - k;
+
+//         if(m.find(val) != m.end()) {
+//             maxLen = max(maxLen, i - m[val]);
+//         }
+
+//         if(m.find(sum) == m.end()) {
+//             m[sum] = i;
+//         }
 //     }
-//     int expected = (n + 1) * (n + 2) / 2;
-//     int missing = expected - sum;
-//     cout << "Missing value: " << missing << endl;
+
+//     cout << "Maximum Length = " << maxLen;
+
 //     return 0;
 // }
+// code for two sum ----------
+int main(){
 
+    vector<int> nums = {8, 6, 7, 9, 4};
+    int target = 17;
+    unordered_map<int, int> m;
 
-// maximum count of consecutive one -----------
+    for (int i = 0; i < nums.size(); i++) {
+        int complement = target - nums[i];
 
-// int main (){
-//           int arr[] = {1,1,0,1,1,1,1,0,1,1,1};
-//           int j ;
-//           int count = 0 ;
-//           int max_count = 0 ;
-//           for (j=0;j<11;j++){
-//              if (arr[j]==1){
-//                count++;
-//                max_count=max(max_count,count);
+        if (m.find(complement) != m.end()) {
+            cout << "Indices: " << m[complement] << ", " << i << endl;
+            break;
+        }
 
-//              }
-//              else{
-//                 count=0;
-//              }
-//           }
-//           cout<<"maximum consecutive one's "<<max_count;
-// }
-
-// which element apperas one's else two -- this can be done by xor as well as and that will b most optimal solution but here we are doing with unordered map the difference is this that it will take space complexity with o(n) and xor will take o(1) elsewhere time complexity will be same of o(nlogn).
-
-// int main(){
-//     int arr [] = {1,1,2,3,3,4,4};
-//     unordered_map<int,int>m;
-//     for (int i =0 ; i<7 ; i++){
-//         m[arr[i]]++;
-//     }
-
-//     for (auto &p : m) {
-//         if (p.second == 1) {
-//             cout << p.first;
-//             break;
-//         }
-//     }
-
-// }
-
-// maximum sub array-brute approach consisting of time complaexity o(n2)-------
-// int main(){
-//     int arr[]={9,4,0,20,3,10,5};
-//     int k =33;
-//     int count=0;
-    
-//     for (int i =0;i<7;i++){
-//         int sum=0;
-//         for (int j =i;j<7;j++){
-//             sum=sum+arr[j];
-//             if (sum==k){
-//                 count++;
-//             }
-//         }
-
-//     }
-//     cout<< " total no of arrays "<< count;
-// } 
-
-// optimal approach consisting of time complexity of o(n)------
-
-int main (){
-    int arr[]={9,4,0,20,3,10,5};
-    int k=33;
-    vector<int>nums;
-    int sum=0;
-    unordered_map<int,int>m;
-    for (int i=0 ; i<7;i++){
-        sum=sum + arr[i];
-        nums.push_back(sum);
-        m[sum]++;
-
+        m[nums[i]] = i;
     }
 
-
-    int count=0;
-
-    for ( int i =0; i<7 ; i++){
-        if (nums[i]==k){
-            count ++;
-        }
-        int val = nums[i]-k;
-        if (m.find(val)!=m.end()){
-            count=count+m[val];
-        }
-    }
-   cout <<" count of subarray consiting of highest subarray "<<count;
-    
+    return 0;
 }
+
