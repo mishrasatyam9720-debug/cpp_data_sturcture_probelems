@@ -225,23 +225,37 @@ using namespace std ;
 //     return 0;
 // }
 // code for two sum ----------
-int main(){
+// int main(){
 
-    vector<int> nums = {8, 6, 7, 9, 4};
-    int target = 17;
-    unordered_map<int, int> m;
+//     vector<int> nums = {8, 6, 7, 9, 4};
+//     int target = 17;
+//     unordered_map<int, int> m;
 
-    for (int i = 0; i < nums.size(); i++) {
-        int complement = target - nums[i];
+//     for (int i = 0; i < nums.size(); i++) {
+//         int complement = target - nums[i];
 
-        if (m.find(complement) != m.end()) {
-            cout << "Indices: " << m[complement] << ", " << i << endl;
-            break;
+//         if (m.find(complement) != m.end()) {
+//             cout << "Indices: " << m[complement] << ", " << i << endl;
+//             break;
+//         }
+
+//         m[nums[i]] = i;
+//     }
+
+//     return 0;
+// }
+
+// maximum subarray -------
+// brute force approach 
+int main (){
+    int arr[]={-8,9,5,6,-4,6,9};
+    int max_sum=0;
+    for (int i=0 ; i<7 ; i++){
+    int cs =0 ;
+    for(int j=i ; j<7 ; j++){
+           cs=cs+arr[j];
+           max_sum=max(max_sum,cs);
         }
-
-        m[nums[i]] = i;
     }
-
-    return 0;
+    cout<<"max_array contains as maxium sum "<<max_sum;
 }
-
