@@ -1,6 +1,8 @@
 #include<iostream>
 #include<vector>
 #include<unordered_map>
+#include<climits>
+#include <algorithm>
 using namespace std ;
 // int main(){
 //     int arr[]={5,6,8,1,2};
@@ -247,15 +249,30 @@ using namespace std ;
 
 // maximum subarray -------
 // brute force approach 
+// int main (){
+//     int arr[]={-8,9,5,6,-4,6,9};
+//     int max_sum=0;
+//     for (int i=0 ; i<7 ; i++){
+//     int cs =0 ;
+//     for(int j=i ; j<7 ; j++){
+//            cs=cs+arr[j];
+//            max_sum=max(max_sum,cs);
+//         }
+//     }
+//     cout<<"max_array contains as maxium sum "<<max_sum;
+// }
+
+// optimal solution of max_subarray sum ---- contains o(n) time complexity -----
 int main (){
     int arr[]={-8,9,5,6,-4,6,9};
-    int max_sum=0;
-    for (int i=0 ; i<7 ; i++){
+    int max_sum=INT_MIN;
     int cs =0 ;
-    for(int j=i ; j<7 ; j++){
-           cs=cs+arr[j];
-           max_sum=max(max_sum,cs);
+    for (int i=0 ; i<7 ; i++){
+        cs=cs+arr[i];
+        max_sum=max(max_sum,cs);
+        if ( cs<0){
+            cs=0;
         }
     }
-    cout<<"max_array contains as maxium sum "<<max_sum;
+    cout<<"max_subarray_sum "<<max_sum;
 }
