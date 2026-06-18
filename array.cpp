@@ -263,16 +263,38 @@ using namespace std ;
 // }
 
 // optimal solution of max_subarray sum ---- contains o(n) time complexity -----
+// int main (){
+//     int arr[]={-8,9,5,6,-4,6,9};
+//     int max_sum=INT_MIN;
+//     int cs =0 ;
+//     for (int i=0 ; i<7 ; i++){
+//         cs=cs+arr[i];
+//         max_sum=max(max_sum,cs);
+//         if ( cs<0){
+//             cs=0;
+//         }
+//     }
+//     cout<<"max_subarray_sum "<<max_sum;
+// }
+
+// moore's voting algorithm ------
+
 int main (){
-    int arr[]={-8,9,5,6,-4,6,9};
-    int max_sum=INT_MIN;
-    int cs =0 ;
-    for (int i=0 ; i<7 ; i++){
-        cs=cs+arr[i];
-        max_sum=max(max_sum,cs);
-        if ( cs<0){
-            cs=0;
+    int arr[]={1,2,2,1,1,2,2};
+    int freq =0 ;
+    int ans ;
+    for ( int i =0 ; i<7 ; i++){
+        if ( freq == 0){
+            ans = arr[i];
+
+        }
+        if ( ans == arr[i]){
+            freq ++ ;
+        }
+        else {
+            freq -- ;
         }
     }
-    cout<<"max_subarray_sum "<<max_sum;
+    cout << "majority element " << ans ;
+
 }
