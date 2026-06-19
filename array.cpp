@@ -262,7 +262,7 @@ using namespace std ;
 //     cout<<"max_array contains as maxium sum "<<max_sum;
 // }
 
-// optimal solution of max_subarray sum ---- contains o(n) time complexity -----
+// optimal solution of max_subarray sum ---- contains o(n) time complexity -----kadans alogorithm -----
 // int main (){
 //     int arr[]={-8,9,5,6,-4,6,9};
 //     int max_sum=INT_MIN;
@@ -279,22 +279,24 @@ using namespace std ;
 
 // moore's voting algorithm ------
 
-int main (){
-    int arr[]={1,2,2,1,1,2,2};
-    int freq =0 ;
-    int ans ;
-    for ( int i =0 ; i<7 ; i++){
-        if ( freq == 0){
-            ans = arr[i];
+// int main (){
+//     int arr[]={1,2,2,1,1,2,2};
+//     int freq =0 ;
+//     int ans ;
+//     for ( int i =0 ; i<7 ; i++){
+//         if ( freq == 0){
+//             ans = arr[i];
 
-        }
-        if ( ans == arr[i]){
-            freq ++ ;
-        }
-        else {
-            freq -- ;
-        }
-    }
-    cout << "majority element " << ans ;
+//         }
+//         if ( ans == arr[i]){
+//             freq ++ ;
+//         }
+//         else {
+//             freq -- ;
+//         }
+//     }
+//     cout << "majority element " << ans ;
 
-}
+// }
+
+// reaarange element by sign and order should be maintain --------
