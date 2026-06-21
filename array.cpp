@@ -300,3 +300,29 @@ using namespace std ;
 // }
 
 // reaarange element by sign and order should be maintain --------
+// int main (){
+//        int arr[]={-1,-2,3,4,8,-8};
+//        vector<int>ans(6);
+//        int pos=0;
+//        int neg=1;
+//        int i ;
+//        for (  i=0 ; i<6 ; i++){
+//         if (arr[i]>0){
+//             ans[pos]=arr[i];
+//             pos=pos+2;
+
+//         }
+
+//         else{
+//             ans[neg]=arr[i];
+//             neg=neg+2;
+//         }
+//        }
+//     cout << " element after alteration";
+//        for (  i =0 ; i<6 ; i++){
+//         cout <<ans[i]<<endl;
+//        }
+
+// }
+
+// next permutation 
