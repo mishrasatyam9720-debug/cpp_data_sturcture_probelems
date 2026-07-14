@@ -387,3 +387,42 @@ int main() {
     return 0;
 }
 
+class Solution {
+public:
+    int lower_bound(vector<int>&arr,int target){
+        int low =0 ;
+        int high = arr.size()-1;
+        int mid ;
+        int ans=arr.size() ;
+        while(low<=high){
+            mid=low+(high-low)/2 ;
+            if(arr[mid]>=target){
+                ans = mid;
+                high=mid-1;
+            }
+            else{
+                low = mid +1 ;
+            }
+        }
+        return ans ;
+
+    }
+    // count of maximum one in a row using binary search 
+    vector<int> rowAndMaximumOnes(vector<vector<int>>& mat) {
+        vector<int>ans_1 ;
+        int n=mat.size();
+        int count_max = -1 ;
+        int index = -1 ;
+        int m = mat[0].size();   
+        for ( int i = 0 ; i< n ;i++){
+        int count_ones = m-lower_bound(mat[i],1);
+        if(count_ones>count_max){
+            count_max=count_ones;
+            index = i;
+        }
+        }
+        ans_1={index,count_max};
+        return ans_1 ;
+      
+    }
+};
