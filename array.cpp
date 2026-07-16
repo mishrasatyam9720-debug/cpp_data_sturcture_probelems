@@ -325,104 +325,145 @@ using namespace std ;
 
 // }
 
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// int merge(vector<int>& arr, int low, int mid, int high) {
+//     vector<int> temp;
+//     int left = low;
+//     int right = mid + 1;
+//     int cnt = 0;
+
+//     while (left <= mid && right <= high) {
+//         if (arr[left] <= arr[right]) {
+//             temp.push_back(arr[left]);
+//             left++;
+//         } else {
+//             temp.push_back(arr[right]);
+//             cnt += (mid - left + 1);
+//             right++;
+//         }
+//     }
+
+//     while (left <= mid) {
+//         temp.push_back(arr[left++]);
+//     }
+
+//     while (right <= high) {
+//         temp.push_back(arr[right++]);
+//     }
+
+//     for (int i = low; i <= high; i++) {
+//         arr[i] = temp[i - low];
+//     }
+
+//     return cnt;
+// }
+
+// int mergeSort(vector<int>& arr, int low, int high) {
+//     if (low >= high)
+//         return 0;
+
+//     int mid = low + (high - low) / 2;
+
+//     int cnt = 0;
+//     cnt += mergeSort(arr, low, mid);
+//     cnt += mergeSort(arr, mid + 1, high);
+//     cnt += merge(arr, low, mid, high);
+
+//     return cnt;
+// }
+
+// int inversionCount(vector<int>& arr) {
+//     return mergeSort(arr, 0, arr.size() - 1);
+// }
+
+// int main() {
+//     vector<int> arr = {5, 3, 2, 4, 1};
+
+//     cout << "Inversion Count = " << inversionCount(arr) << endl;
+
+//     return 0;
+// }
+
+// class Solution {
+// public:
+//     int lower_bound(vector<int>&arr,int target){
+//         int low =0 ;
+//         int high = arr.size()-1;
+//         int mid ;
+//         int ans=arr.size() ;
+//         while(low<=high){
+//             mid=low+(high-low)/2 ;
+//             if(arr[mid]>=target){
+//                 ans = mid;
+//                 high=mid-1;
+//             }
+//             else{
+//                 low = mid +1 ;
+//             }
+//         }
+//         return ans ;
+
+//     }
+//     // count of maximum one in a row using binary search 
+//     vector<int> rowAndMaximumOnes(vector<vector<int>>& mat) {
+//         vector<int>ans_1 ;
+//         int n=mat.size();
+//         int count_max = -1 ;
+//         int index = -1 ;
+//         int m = mat[0].size();   
+//         for ( int i = 0 ; i< n ;i++){
+//         int count_ones = m-lower_bound(mat[i],1);
+//         if(count_ones>count_max){
+//             count_max=count_ones;
+//             index = i;
+//         }
+//         }
+//         ans_1={index,count_max};
+//         return ans_1 ;
+      
+//     }
+// };
 #include <iostream>
+#include <sstream>
 #include <vector>
+#include <string>
+
 using namespace std;
 
-int merge(vector<int>& arr, int low, int mid, int high) {
-    vector<int> temp;
-    int left = low;
-    int right = mid + 1;
-    int cnt = 0;
+string reverseWords(string s) {
 
-    while (left <= mid && right <= high) {
-        if (arr[left] <= arr[right]) {
-            temp.push_back(arr[left]);
-            left++;
-        } else {
-            temp.push_back(arr[right]);
-            cnt += (mid - left + 1);
-            right++;
-        }
+    // String ko words me split karega
+    stringstream ss(s);
+
+    vector<string> words;
+    string temp;
+
+    // Ek-ek word read karo
+    while (ss >> temp) {
+        words.push_back(temp);
     }
 
-    while (left <= mid) {
-        temp.push_back(arr[left++]);
+    string ans = "";
+
+    // Reverse order me answer banao
+    for (int i = words.size() - 1; i >= 0; i--) {
+        ans += words[i];
+
+        if (i != 0)
+            ans += " ";
     }
 
-    while (right <= high) {
-        temp.push_back(arr[right++]);
-    }
-
-    for (int i = low; i <= high; i++) {
-        arr[i] = temp[i - low];
-    }
-
-    return cnt;
-}
-
-int mergeSort(vector<int>& arr, int low, int high) {
-    if (low >= high)
-        return 0;
-
-    int mid = low + (high - low) / 2;
-
-    int cnt = 0;
-    cnt += mergeSort(arr, low, mid);
-    cnt += mergeSort(arr, mid + 1, high);
-    cnt += merge(arr, low, mid, high);
-
-    return cnt;
-}
-
-int inversionCount(vector<int>& arr) {
-    return mergeSort(arr, 0, arr.size() - 1);
+    return ans;
 }
 
 int main() {
-    vector<int> arr = {5, 3, 2, 4, 1};
 
-    cout << "Inversion Count = " << inversionCount(arr) << endl;
+    string s = "  hello   world  ";
+
+    cout << reverseWords(s);
 
     return 0;
 }
-
-class Solution {
-public:
-    int lower_bound(vector<int>&arr,int target){
-        int low =0 ;
-        int high = arr.size()-1;
-        int mid ;
-        int ans=arr.size() ;
-        while(low<=high){
-            mid=low+(high-low)/2 ;
-            if(arr[mid]>=target){
-                ans = mid;
-                high=mid-1;
-            }
-            else{
-                low = mid +1 ;
-            }
-        }
-        return ans ;
-
-    }
-    // count of maximum one in a row using binary search 
-    vector<int> rowAndMaximumOnes(vector<vector<int>>& mat) {
-        vector<int>ans_1 ;
-        int n=mat.size();
-        int count_max = -1 ;
-        int index = -1 ;
-        int m = mat[0].size();   
-        for ( int i = 0 ; i< n ;i++){
-        int count_ones = m-lower_bound(mat[i],1);
-        if(count_ones>count_max){
-            count_max=count_ones;
-            index = i;
-        }
-        }
-        ans_1={index,count_max};
-        return ans_1 ;
-      
-    }
-};
