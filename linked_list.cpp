@@ -1,3 +1,46 @@
+// // // // // #include <iostream>
+// // // // // #include <vector>
+// // // // // using namespace std;
+
+// // // // // struct node {
+// // // // //     int data;
+// // // // //     node* next;
+
+// // // // //     node(int info, node* next1) {
+// // // // //         data = info;
+// // // // //         next = next1;
+// // // // //     }
+// // // // // };
+
+// // // // // node* convertNode(vector<int> arr) {
+// // // // //     node* head = new node(arr[0], nullptr);
+// // // // //     node* mover = head;
+
+// // // // //     for (int i = 1; i < arr.size(); i++) {
+// // // // //         node* temp = new node(arr[i], nullptr);
+// // // // //         mover->next = temp;
+// // // // //         mover = temp;
+// // // // //     }
+
+// // // // //     return head;
+// // // // // }
+
+// // // // // int main() {
+// // // // //     vector<int> arr = {0, 1, 2, 3, 4};
+
+// // // // //     node* head = convertNode(arr);
+
+// // // // //     // Traverse and print
+// // // // //     node* temp = head;
+
+// // // // //     while (temp != nullptr) {
+// // // // //         cout << temp->data << " ";
+// // // // //         temp = temp->next;
+// // // // //     }
+
+// // // // //     return 0;
+// // // // // }
+
 // // // // #include <iostream>
 // // // // #include <vector>
 // // // // using namespace std;
@@ -12,6 +55,7 @@
 // // // //     }
 // // // // };
 
+// // // // // Array -> Linked List
 // // // // node* convertNode(vector<int> arr) {
 // // // //     node* head = new node(arr[0], nullptr);
 // // // //     node* mover = head;
@@ -25,22 +69,47 @@
 // // // //     return head;
 // // // // }
 
-// // // // int main() {
-// // // //     vector<int> arr = {0, 1, 2, 3, 4};
-
-// // // //     node* head = convertNode(arr);
-
-// // // //     // Traverse and print
+// // // // // Traversal
+// // // // void traverse(node* head) {
 // // // //     node* temp = head;
 
 // // // //     while (temp != nullptr) {
 // // // //         cout << temp->data << " ";
 // // // //         temp = temp->next;
 // // // //     }
+// // // //     cout << endl;
+// // // // }
+
+// // // // // Delete Head Node
+// // // // node* deleteHead(node* head) {
+
+// // // //     if (head == nullptr)
+// // // //         return nullptr;
+
+// // // //     node* temp = head;
+// // // //     head = head->next;
+
+// // // //     delete temp;
+
+// // // //     return head;
+// // // // }
+
+// // // // int main() {
+
+// // // //     vector<int> arr = {0, 1, 2, 3, 4};
+
+// // // //     node* head = convertNode(arr);
+
+// // // //     cout << "Before Deletion: ";
+// // // //     traverse(head);
+
+// // // //     head = deleteHead(head);
+
+// // // //     cout << "After Deletion: ";
+// // // //     traverse(head);
 
 // // // //     return 0;
 // // // // }
-
 // // // #include <iostream>
 // // // #include <vector>
 // // // using namespace std;
@@ -57,6 +126,7 @@
 
 // // // // Array -> Linked List
 // // // node* convertNode(vector<int> arr) {
+
 // // //     node* head = new node(arr[0], nullptr);
 // // //     node* mover = head;
 
@@ -71,25 +141,38 @@
 
 // // // // Traversal
 // // // void traverse(node* head) {
+
 // // //     node* temp = head;
 
 // // //     while (temp != nullptr) {
 // // //         cout << temp->data << " ";
 // // //         temp = temp->next;
 // // //     }
+
 // // //     cout << endl;
 // // // }
 
-// // // // Delete Head Node
-// // // node* deleteHead(node* head) {
+// // // // Delete Last Node
+// // // node* deleteTail(node* head) {
 
+// // //     // Empty Linked List
 // // //     if (head == nullptr)
 // // //         return nullptr;
 
-// // //     node* temp = head;
-// // //     head = head->next;
+// // //     // Only one node
+// // //     if (head->next == nullptr) {
+// // //         delete head;
+// // //         return nullptr;
+// // //     }
 
-// // //     delete temp;
+// // //     node* temp = head;
+
+// // //     while (temp->next->next != nullptr) {
+// // //         temp = temp->next;
+// // //     }
+
+// // //     delete temp->next;
+// // //     temp->next = nullptr;
 
 // // //     return head;
 // // // }
@@ -103,7 +186,7 @@
 // // //     cout << "Before Deletion: ";
 // // //     traverse(head);
 
-// // //     head = deleteHead(head);
+// // //     head = deleteTail(head);
 
 // // //     cout << "After Deletion: ";
 // // //     traverse(head);
@@ -126,6 +209,9 @@
 
 // // // Array -> Linked List
 // // node* convertNode(vector<int> arr) {
+
+// //     if (arr.size() == 0)
+// //         return nullptr;
 
 // //     node* head = new node(arr[0], nullptr);
 // //     node* mover = head;
@@ -152,27 +238,37 @@
 // //     cout << endl;
 // // }
 
-// // // Delete Last Node
-// // node* deleteTail(node* head) {
+// // // Delete Kth Node
+// // node* deleteK(node* head, int k) {
 
 // //     // Empty Linked List
 // //     if (head == nullptr)
 // //         return nullptr;
 
-// //     // Only one node
-// //     if (head->next == nullptr) {
-// //         delete head;
-// //         return nullptr;
+// //     // Delete Head
+// //     if (k == 1) {
+// //         node* temp = head;
+// //         head = head->next;
+// //         delete temp;
+// //         return head;
 // //     }
 
 // //     node* temp = head;
+// //     node* prev = nullptr;
+// //     int cnt = 1;
 
-// //     while (temp->next->next != nullptr) {
+// //     while (temp != nullptr) {
+
+// //         if (cnt == k) {
+// //             prev->next = temp->next;
+// //             delete temp;
+// //             break;
+// //         }
+
+// //         prev = temp;
 // //         temp = temp->next;
+// //         cnt++;
 // //     }
-
-// //     delete temp->next;
-// //     temp->next = nullptr;
 
 // //     return head;
 // // }
@@ -186,7 +282,11 @@
 // //     cout << "Before Deletion: ";
 // //     traverse(head);
 
-// //     head = deleteTail(head);
+// //     int k;
+// //     cout << "Enter Position to Delete: ";
+// //     cin >> k;
+
+// //     head = deleteK(head, k);
 
 // //     cout << "After Deletion: ";
 // //     traverse(head);
@@ -194,123 +294,77 @@
 // //     return 0;
 // // }
 // #include <iostream>
-// #include <vector>
 // using namespace std;
 
-// struct node {
+// struct Node
+// {
 //     int data;
-//     node* next;
+//     Node* prev;
+//     Node* next;
 
-//     node(int info, node* next1) {
-//         data = info;
-//         next = next1;
+//     Node(int val)
+//     {
+//         data = val;
+//         prev = NULL;
+//         next = NULL;
 //     }
 // };
 
-// // Array -> Linked List
-// node* convertNode(vector<int> arr) {
+// Node* deleteHead(Node* head)
+// {
+//     // Empty list
+//     if (head == NULL)
+//         return NULL;
 
-//     if (arr.size() == 0)
-//         return nullptr;
-
-//     node* head = new node(arr[0], nullptr);
-//     node* mover = head;
-
-//     for (int i = 1; i < arr.size(); i++) {
-//         node* temp = new node(arr[i], nullptr);
-//         mover->next = temp;
-//         mover = temp;
+//     // Only one node
+//     if (head->next == NULL)
+//     {
+//         delete head;
+//         return NULL;
 //     }
+
+//     Node* temp = head;
+//     head = head->next;
+//     head->prev = NULL;
+
+//     delete temp;
 
 //     return head;
 // }
 
-// // Traversal
-// void traverse(node* head) {
-
-//     node* temp = head;
-
-//     while (temp != nullptr) {
-//         cout << temp->data << " ";
-//         temp = temp->next;
+// void printList(Node* head)
+// {
+//     while (head != NULL)
+//     {
+//         cout << head->data << " ";
+//         head = head->next;
 //     }
-
 //     cout << endl;
 // }
 
-// // Delete Kth Node
-// node* deleteK(node* head, int k) {
+// int main()
+// {
+//     // 10 <-> 20 <-> 30
+//     Node* head = new Node(10);
+//     Node* second = new Node(20);
+//     Node* third = new Node(30);
 
-//     // Empty Linked List
-//     if (head == nullptr)
-//         return nullptr;
-
-//     // Delete Head
-//     if (k == 1) {
-//         node* temp = head;
-//         head = head->next;
-//         delete temp;
-//         return head;
-//     }
-
-//     node* temp = head;
-//     node* prev = nullptr;
-//     int cnt = 1;
-
-//     while (temp != nullptr) {
-
-//         if (cnt == k) {
-//             prev->next = temp->next;
-//             delete temp;
-//             break;
-//         }
-
-//         prev = temp;
-//         temp = temp->next;
-//         cnt++;
-//     }
-
-//     return head;
-// }
-
-// int main() {
-
-//     vector<int> arr = {0, 1, 2, 3, 4};
-
-//     node* head = convertNode(arr);
+//     head->next = second;
+//     second->prev = head;
+//     second->next = third;
+//     third->prev = second;
 
 //     cout << "Before Deletion: ";
-//     traverse(head);
+//     printList(head);
 
-//     int k;
-//     cout << "Enter Position to Delete: ";
-//     cin >> k;
-
-//     head = deleteK(head, k);
+//     head = deleteHead(head);
 
 //     cout << "After Deletion: ";
-//     traverse(head);
+//     printList(head);
 
 //     return 0;
 // }
-#include <iostream>
-using namespace std;
-
-struct Node
-{
-    int data;
-    Node* prev;
-    Node* next;
-
-    Node(int val)
-    {
-        data = val;
-        prev = NULL;
-        next = NULL;
-    }
-};
-
-Node* deleteHead(Node* head)
+Node* deleteTail(Node* head)
 {
     // Empty list
     if (head == NULL)
@@ -324,43 +378,18 @@ Node* deleteHead(Node* head)
     }
 
     Node* temp = head;
-    head = head->next;
-    head->prev = NULL;
 
+    // Last node tak jao
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+
+    // Second last node ko NULL se connect karo
+    temp->prev->next = NULL;
+
+    // Last node delete karo
     delete temp;
 
     return head;
-}
-
-void printList(Node* head)
-{
-    while (head != NULL)
-    {
-        cout << head->data << " ";
-        head = head->next;
-    }
-    cout << endl;
-}
-
-int main()
-{
-    // 10 <-> 20 <-> 30
-    Node* head = new Node(10);
-    Node* second = new Node(20);
-    Node* third = new Node(30);
-
-    head->next = second;
-    second->prev = head;
-    second->next = third;
-    third->prev = second;
-
-    cout << "Before Deletion: ";
-    printList(head);
-
-    head = deleteHead(head);
-
-    cout << "After Deletion: ";
-    printList(head);
-
-    return 0;
 }
